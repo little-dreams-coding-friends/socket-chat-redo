@@ -1,6 +1,7 @@
 const uuidv4 = require('uuid').v4;
 
-const message = new Set();
+const messages = new Set();
+const messageExpireTimeMS = 5 * 60 * 1000;
 
 class Connection {
     constructor (io, socket) {
@@ -17,5 +18,24 @@ class Connection {
 
     sendMessage(message) {
         this.io.sockets.emit('message', message);
+    }
+
+    handleMessage(value) {
+        const message = {
+            id: uuidv4(),
+            value,
+            time: Date.now()
+        };
+
+        messages.add(message);
+        this.sendMessage(message);
+
+        setTimeout(
+            () => {
+                messages.delete(message);
+                this.io.sockets.emit('deleteMessage', message.id);
+            },
+            messageExpireTimeMS,
+        );
     }
 }
