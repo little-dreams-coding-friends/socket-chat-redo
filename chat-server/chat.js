@@ -1,3 +1,5 @@
+const uuidv4 = require('uuid').v4;
+
 class Connection {
     constructor (io, socket) {
         this.socket = socket;
