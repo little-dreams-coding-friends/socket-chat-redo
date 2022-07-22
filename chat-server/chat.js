@@ -39,3 +39,11 @@ class Connection {
         );
     }
 }
+
+function chat(io) {
+    io.on('connection', (socket) => {
+        new Connection(io, socket);
+    });
+};
+
+module.exports = chat;
