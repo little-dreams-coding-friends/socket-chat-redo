@@ -1,5 +1,7 @@
 const uuidv4 = require('uuid').v4;
 
+const message = new Set();
+
 class Connection {
     constructor (io, socket) {
         this.socket = socket;
