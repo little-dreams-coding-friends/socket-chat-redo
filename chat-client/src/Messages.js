@@ -40,8 +40,8 @@ return (
         <div
             key={message.id}
             className="msg-box">   
-            <span  className="msg">{message.value}</span>
-            <span  className="timestamp">{new Date(message.time).toLocaleTimeString()}</span>
+            <p className="msg">{message.value}</p>
+            <p  className="timestamp">{new Date(message.time).toLocaleTimeString()}</p>
         </div>
         ))
     }

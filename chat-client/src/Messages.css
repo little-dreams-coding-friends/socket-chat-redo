@@ -6,18 +6,22 @@
 .msg-box {
     display: flex;
     flex-direction: row;
-    padding: 5px;
+    padding-right: 10px;
     border: 1px solid #181616;
 }
 
 .timestamp {
-    font-size: larger;
+    font-size: small;
     font-style: italic;
+    margin-top: 20px;
+    margin-right: 5px;
     color: #302e2e;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
 .msg {
     flex-grow: 1;
+    font-size: larger;
+    color: #302e2e;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
