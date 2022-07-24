@@ -1,7 +1,20 @@
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
+import io from 'socket.io-cleint';
+import Messages from './Messages';
+import MessageInput from './MessageInput';
 import './App.css';
 
 function App() {
+
+  const [socket, setSocket] = useState(null);
+
+  useEffect(() => {
+    const newSocket = io(`httlp://${window.location.hostname}: 3000`);
+    setSocket(newSocket);
+
+    return () => newSocket.close();
+  }, [setSocket]);
+  
   return (
     <div className="App">
       <header className="App-header">
