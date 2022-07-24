@@ -1,0 +1,27 @@
+.msgList {
+    max-width: 280px;
+    width: 100%;
+}
+
+.msg-box {
+    display: flex;
+    flex-direction: row;
+    padding-right: 10px;
+    border: 1px solid #181616;
+}
+
+.timestamp {
+    font-size: small;
+    font-style: italic;
+    margin-top: 20px;
+    margin-right: 5px;
+    color: #302e2e;
+}
+
+
+.msg {
+    flex-grow: 1;
+    font-size: larger;
+    color: #302e2e;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

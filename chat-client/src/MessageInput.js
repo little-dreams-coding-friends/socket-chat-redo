@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
+import './MessageInput.css';
 
 const NewMessage = ({socket}) => {
     const [value, setValue] = useState('');
     const submitForm = (e) => {
-    e.preventDefault();
-    socket.emit('message', value);
-    console.log(value);
-    setValue('');
+        e.preventDefault();
+        socket.emit('message', value);
+        console.log(value);
+        setValue('');
 };
 
 return (
