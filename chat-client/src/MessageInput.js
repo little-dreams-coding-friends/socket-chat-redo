@@ -18,4 +18,4 @@ const NewMessage = ({socket}) => {
     )
 }
 
-module.exports = NewMessage;
+export default NewMessage;

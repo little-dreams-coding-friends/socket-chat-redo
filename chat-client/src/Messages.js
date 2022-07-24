@@ -42,4 +42,4 @@ function Messages({socket}) {
     )
 }
 
-module.exports = Messages;
+export default Messages
