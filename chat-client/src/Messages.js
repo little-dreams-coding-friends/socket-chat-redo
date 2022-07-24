@@ -32,13 +32,12 @@ useEffect(() => {
 }, [socket]);
 
 return (
-    <div className="message-list">
+    <div>
     {[...Object.values(messages)]
         .sort((a, b) => a.time - b.time)
         .map((message) => (
         <div
             key={message.id}
-            className="message-container"
             title={`Sent at ${new Date(message.time).toLocaleTimeString()}`}
         >
             <span >{message.value}</span>

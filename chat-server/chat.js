@@ -10,7 +10,6 @@ class Connection {
 
         socket.on('getMessages', () => this.getMessages());
         socket.on('message', (value) => this.handleMessage(value));
-        // socket.on('disconnect', () => this.disconnect());
         socket.on('connect_error', (err) => {
         console.log(`connect_error due to ${err.message}`);
         });

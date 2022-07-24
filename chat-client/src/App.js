@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 import Messages from './Messages';
 import MessageInput from './MessageInput';
 import './App.css';
+import logo from './MeowChat.png';
 
 function App() {
 
@@ -19,8 +20,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">Welcome to our Chat</header>
+      <img src={logo} alt="logo" />
           {socket ? (
-            <div> 
+            <div className ="chat-box"> 
               <Messages socket={socket}/>
               <MessageInput socket={socket}/>
             </div>
