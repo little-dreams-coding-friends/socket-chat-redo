@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">Welcome to our Chat</header>
+      <header className="App-header">Welcome to Friends Meow Chat</header>
       <img src={logo} alt="logo" />
           {socket ? (
             <div className ="chat-box"> 
