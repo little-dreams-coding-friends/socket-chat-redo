@@ -1,23 +1,27 @@
 const uuidv4 = require('uuid').v4;
 
 const messages = new Set();
-const messageExpireTimeMS = 5 * 60 * 1000;
+const messageExpirationTimeMS = 5*60 * 1000;
 
 class Connection {
-    constructor (io, socket) {
+    constructor(io, socket) {
         this.socket = socket;
         this.io = io;
 
         socket.on('getMessages', () => this.getMessages());
-        socket.on('message', (value) =>  this.handleMessage(value));
-        socket.on('disconnect', () => this.disconnet());
+        socket.on('message', (value) => this.handleMessage(value));
+        // socket.on('disconnect', () => this.disconnect());
         socket.on('connect_error', (err) => {
-            console.log('connect_error due to ' + err.message);
+        console.log(`connect_error due to ${err.message}`);
         });
     }
-
+    
     sendMessage(message) {
         this.io.sockets.emit('message', message);
+    }
+    
+    getMessages() {
+        messages.forEach((message) => this.sendMessage(message));
     }
 
     handleMessage(value) {
@@ -35,15 +39,15 @@ class Connection {
                 messages.delete(message);
                 this.io.sockets.emit('deleteMessage', message.id);
             },
-            messageExpireTimeMS,
-        );
+            messageExpirationTimeMS,
+            );
+        }
     }
-}
 
-function chat(io) {
-    io.on('connection', (socket) => {
-        new Connection(io, socket);
-    });
+    function chat(io) {
+        io.on('connection', (socket) => {
+            new Connection(io, socket);   
+        });
 };
 
 module.exports = chat;
